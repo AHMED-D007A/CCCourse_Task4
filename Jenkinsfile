@@ -4,7 +4,11 @@ pipeline {
     stages {
         stage('Clone/Pull Repository') {
             steps {
-                checkout scm
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[url: 'https://github.com/AHMED-D007A/CCCourse_Task4.git']]
+                ])
             }
         }
 
